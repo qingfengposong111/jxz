@@ -1,0 +1,7 @@
+<!--pages/start/auth.wxml-->
+<view class='modal'>
+  <view class='subtitle'>尚未进行授权，请点击确定进行授权。</view>
+  <button wx:if="{{canIUse}}" open-type="getUserInfo" lang="zh_CN" withCredentials="true" bindgetuserinfo="onGotUserInfo">
+    确定
+  </button>
+</view>

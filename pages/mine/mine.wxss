@@ -1,0 +1,19 @@
+/* pages/mine/mine.wxss */
+page{background: #f5f5f5;}
+.minebg{height: 320rpx; width: 100%;}
+.mine_card{padding: 20rpx 30rpx; width: 650rpx; background: #fff; position: absolute; top: 200rpx; border-radius: 8rpx;}
+
+.mine_card_top{border-bottom: 1px solid #EBEBEB; padding: 20rpx 0; font-size: 24rpx; color: #302C3D; line-height: 35rpx;}
+.mine_card_top .name{ font-size: 30rpx; font-weight: 600; line-height: 65rpx;}
+.mine_card_top image{width: 100rpx; height: 100rpx; border-radius: 50%; background: gray;}
+
+.actions{padding: 40rpx 0 20rpx 0;}
+.actionBtn{text-align: center; color: #302C3D; font-size: 24rpx;}
+.actionBtn image{width: 50rpx; height: 50rpx;}
+.actionBtn view{line-height: 48rpx;}
+
+.sesstion{margin-bottom: 40rpx;}
+.mine_list{position: relative; top: 290rpx; width: 100%; line-height: 120rpx;}
+.list_item{height: 120rpx; margin-bottom: 4rpx; background: #fff; padding: 0 40rpx; font-size: 36rpx;
+color: #302C3D; vertical-align: middle;}
+.list_item image{width: 40rpx; height: 40rpx; margin-right: 20rpx; position: relative; top: 8rpx;}

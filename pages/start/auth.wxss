@@ -1,0 +1,4 @@
+/* pages/start/auth.wxss */
+.modal{width: 500rpx; margin: 150rpx auto; margin-top: 150rpx; padding: 20rpx; border-radius: 8rpx; color: #999999;
+font-size:24rpx; line-height: 50rpx;background: #fff;}
+.modal .subtitle{color: #302C3D; font-size:28rpx; padding: 30rpx; margin-top: 20rpx;}
