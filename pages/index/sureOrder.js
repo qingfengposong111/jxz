@@ -78,6 +78,8 @@ Page({
               }
             })
           }
+        }else{
+          util.djToast(res.msg);
         }
       });
   },

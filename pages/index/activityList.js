@@ -5,7 +5,8 @@ Page({
   data: {
      id:null,
      list:[],
-     match:null
+     match:null,
+     haveNext: 0
   },
   navTo: function (e) {
     wx.navigateTo({ url: e.currentTarget.dataset.url })

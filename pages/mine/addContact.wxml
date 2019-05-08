@@ -374,7 +374,7 @@
         </radio-group>
       </view>
     </view>
-    <view class='form_item flex-between max_margin'>
+    <!-- <view class='form_item flex-between max_margin'>
       <view class='flex1 label'>发票
         <span>*</span>
       </view>
@@ -382,7 +382,7 @@
         <input disabled placeholder='点击选择'></input>
         <i-icon type="enter" size="14" color="#80848f" style='float:right;' />
       </view>
-    </view>
+    </view> -->
     <view class='max_margin isagree'>
      <checkbox-group name="agree">
       <label>

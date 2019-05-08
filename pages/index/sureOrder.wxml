@@ -6,7 +6,7 @@
           <span>*</span>个人信息
         </view>
         <view class='inputtips'>
-          请填写以便工作人员更好为您服务
+          {{register.name.lenght== null ? "请填写以便工作人员更好为您服务" : "发起众筹订单前可随时更改个人信息"}}
         </view>
       </view>
       <view class='flex1 tr' data-url='/pages/index/addMyInfo' catchtap='navTo'>

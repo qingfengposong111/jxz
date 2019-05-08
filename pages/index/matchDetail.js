@@ -7,7 +7,9 @@ Page({
     current: "tab1",
     act:null,
     resetTime:"",
-    timerID:null
+    timerID:null,
+    status:"进行中",
+    activity_id:""
   },
   handleChange({
     detail
@@ -21,6 +23,25 @@ Page({
       url: e.currentTarget.dataset.url
     })
   },
+
+  myHelper:function(){
+    var _this = this
+    djRequest.djPost("/checkActivityOrder", { "activity_id": _this.data.activity_id }, function (res) {
+        console.log(res);
+      if (res.code == 0) {
+        if (res.data.order_sn == ""){
+          wx.navigateTo({
+            url: '../../pages/index/sureOrder?type=1'
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/fund/fundDetail?order_sn=' + res.data.order_sn+'&type=1'
+          })
+        }
+      }
+    })
+  },
+
   getActivityDetail: function(id) {
     var _this = this
     djRequest.djPost("/activityDetail", { "id": id}, function (res) {
@@ -63,6 +84,10 @@ Page({
   },
   /**---------------- 生命周期函数--监听页面加载------------------*/
   onLoad: function(options) {
+    this.setData({
+      status:options.status,
+      activity_id: options.id
+    })
     this.getActivityDetail(options.id);
   },
   onReady: function() {

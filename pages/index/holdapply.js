@@ -7,6 +7,7 @@ Page({
     selectedIndex: 0,
     selectMatch: null,
     visible: false,
+    contact_list:[]
   },
   showModal(){
     this.setData({
@@ -42,7 +43,15 @@ Page({
   },
   /**---------------- 生命周期函数--监听页面加载------------------*/
   onLoad: function (options) {
-
+    var _this = this;
+     wx.getStorage({
+       key: 'contact_list',
+       success: function(res) {
+         _this.setData({
+           contact_list:res.data
+         })
+       },
+     })
   },
   onReady: function () {
 

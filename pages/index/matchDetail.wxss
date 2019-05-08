@@ -17,6 +17,7 @@ line-height: 80rpx; border-top-right-radius: 40rpx; border-bottom-right-radius: 
 .detail_data .num{color: #FF4F00; font-size: 32rpx; line-height: 65rpx;}
 
 .jx_tabs{width: 100%; background: #fff;}
+.list{margin-bottom: 90rpx;}
 
 
 
@@ -25,3 +26,4 @@ line-height: 80rpx; border-top-right-radius: 40rpx; border-bottom-right-radius: 
 .actions button{background: #979797; color:#fff;margin: 20rpx;}
 .actions button.active1{background: #EEF6FF; color: #3478FF; border: 1px solid #3478FF;}
 .actions button.active2{background: #E1FFE4;color: #00AE11; border: 1px solid #00AE11;}
+.actions .status{height: 80rpx; text-align: center; font-size: 32rpx; color: #302C3D; width: 100%; line-height: 80rpx;}

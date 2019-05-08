@@ -18,7 +18,8 @@ Page({
     my_rank:null,
     erCodeUrl:'',
     erCodeImageUrl:'',
-    shareImgUrl:''
+    shareImgUrl:'',
+    type:'1'
   },
   handleChange({ detail }) {
     this.setData({
@@ -135,11 +136,11 @@ Page({
 
     let path = '/pages/fund/fundShared';
     let param = encodeURIComponent('order_sn=' + options.order_sn);
-    let url = "https://act.yingtxx.cn/getReferQrcode?path=" + path + "&param=" + param + '&time=' + Date.parse(new Date());
-
+    let url = "https://act.yingtxx.cn/getReferQrcode?path=" + path + "&totalImg=1" + "&param=" + param + '&time=' + Date.parse(new Date());
     this.setData({
       erCodeUrl: url,
       order_sn: options.order_sn,
+      type:options.type
     })
 
     this.setData({
@@ -188,16 +189,16 @@ Page({
    //画二维码
   paletteErCodeImg() {
     return ({
-      width: '360rpx',
-      height: '360rpx',
+      width: '650rpx',
+      height: '900rpx',
       views: [
         {
           type: 'image',
           url: this.data.erCodeUrl,
           css: {
             color: 'red',
-            width: '360rpx',
-            height: '360rpx',
+            width: '650rpx',
+            height: '900rpx',
           },
         }
       ],

@@ -2,6 +2,7 @@
   "pages": [
     "pages/start/start",
     "pages/start/auth",
+    "pages/start/webView",
     "pages/index/index",
     "pages/index/teamactivite",
     "pages/index/hold",

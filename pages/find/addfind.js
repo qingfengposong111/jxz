@@ -54,8 +54,13 @@ Page({
       return;
     }
 
-    if (this.data.textValue.length == 0) {
-      util.djToast('发布图片不能为空')
+    if (this.data.textValue.length > 100) {
+      util.djToast('发布文字内容不能超过100字')
+      return;
+    }
+
+    if (this.data.cover.length == 0) {
+      util.djToast('请选择照片')
       return;
     }
     var _this = this

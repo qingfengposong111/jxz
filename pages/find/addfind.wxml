@@ -2,7 +2,7 @@
 <view class='container'>
   <form  class='add_form'>
     <textarea placeholder="请输入您要发布的内"  bindinput="textareaBlur" placeholder-style="color:#979797;"/>
-    <image bindtap='selectImg'  wx:if='{{showImg}}' src='{{selected_img}}'></image>
+    <image mode='aspectFit' bindtap='selectImg'  wx:if='{{showImg}}' src='{{selected_img}}'></image>
     <view class='takeImg' bindtap='selectImg'>选择照片<i-icon type="camera_fill" size="26" color="#3478FF" /></view>
   </form>
 

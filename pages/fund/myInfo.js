@@ -101,6 +101,10 @@ Page({
     // 校验表单
     if (!util.isNotNull(data.name, "姓名")) return;
     if (!util.isNotNull(data.id_card, "身份证号")) return;
+    if (!util.validateIdCard(data.id_card)) {
+      util.djToast("身份证号码格式错误！");
+      return;
+    };
     if (!util.isNotNull(data.phone, "手机号")) return;
     if (!util.availablePhone(data.phone)) return;
     if (!util.isNotNull(data.wx_code, "微信号")) return;

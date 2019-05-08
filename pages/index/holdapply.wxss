@@ -12,7 +12,7 @@ color: #302C3D; font-size: 24rpx; line-height: 48rpx; width: 670rpx;}
 .form_item .item_title span{color: #FF4F00; }
 .form_item input{text-align: right; font: 28rpx; padding: 0 20rpx;}
 
-.actions{width: 670rpx; margin-top: 40rpx;}
+.actions{width: 710rpx; margin-top: 40rpx;}
 .actions button{background: #00B9FF; color:#fff; margin-bottom: 40rpx;}
 .error{color: #302C3D; font-size: 24rpx; line-height: 40rpx; text-align: left;}
 .error text{color: #FF4F00;}

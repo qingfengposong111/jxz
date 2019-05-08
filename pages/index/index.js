@@ -3,11 +3,28 @@ const djRequest = require('../../utils/request.js');
 Page({
   data: {
     banner_list: [],
-    list:[],
+    list:[]
   },
   //页面跳转
   navTo: function (e) {
     wx.navigateTo({ url: e.currentTarget.dataset.url })
+  },
+
+  toWebUrl:function(e){
+    wx.navigateTo({ url: "../../pages/start/webView?url=" + e.currentTarget.dataset.url})
+  },
+  //系统设置
+  getSysConfig: function () {
+    var _this = this
+    djRequest.djGet("/getSysConfig", {}, function (res) {
+      //console.log(res);
+      if (res.code == 0) {
+        wx.setStorage({
+          key: 'sysConfig',
+          data: res.data,
+        })
+      }
+    });
   },
   //轮播图
   getBannerData:function(){
@@ -37,5 +54,6 @@ Page({
   onLoad: function () {
    this.getBannerData();
    this.getMatchList();
+   this.getSysConfig();
   }
 })

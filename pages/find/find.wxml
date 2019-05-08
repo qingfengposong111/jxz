@@ -13,17 +13,17 @@
     <view class='list_item com_item' wx:for="{{comlist}}" wx:key="key">
       <view class='com_header flex-start'>
         <view class='flex1'>
-          <image src='{{item.header_img}}'></image>
+          <image mode='aspectFill' src='{{item.header_img}}'></image>
         </view>
         <view class='flex5 info'>
           <view class='infoname'>{{item.user_name}}</view>
-          <view class='infoother'>11分钟前来自深圳
-            <span>勇者进团</span>
+          <view class='infoother'>{{item.create_time}}来自{{item.area[1]}}
+            <span>{{item.team_title}}</span>
           </view>
         </view>
       </view>
       <view class='content'>{{item.content}}</view>
-      <image src='{{item.cover_url}}'></image>
+      <image mode='aspectFill' src='{{item.cover_url}}'></image>
       <!-- <view class='flex-around com_bottom'>
         <view>
           <i-icon type="send" size="18" color="#80848f" />分享

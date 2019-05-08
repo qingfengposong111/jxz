@@ -13,7 +13,7 @@
       <view class='flex-start money'>
         <span>￥</span>
         <input hidden='true' name="activity_order_sn" value='{{order_sn}}'></input>
-        <input type='number' name="total_amount" placeholder='请输入支持金额'></input>
+        <input type='digit' name="total_amount" placeholder='请输入支持金额'></input>
       </view>
     </view>
     <view class="tips">本次赛事最多支持剩余金额：{{reset}}元</view>

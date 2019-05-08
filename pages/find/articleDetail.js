@@ -13,7 +13,7 @@ Page({
       if (res.code == 0) {
         _this.setData({
           artData: res.data,
-          html:res.data.content
+          html: res.data.content.replace(/\<img/gi, '<img style="width:100%;height:auto" '),
         })
       }
     });

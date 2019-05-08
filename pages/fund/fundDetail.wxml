@@ -9,13 +9,16 @@
   <view class='section_card'>
     <view class='flex-between'>
       <view class='title'>我的众筹</view>
-      <view class='subtitle'>剩余
-        <span>{{resetTime}}</span>天</view>
+      <view class='subtitle' wx:if="{{type==1}}">剩余
+        <span>{{resetTime}}</span>天
+      </view>
+       <view class='subtitle' wx:if="{{type==2}}">已成功</view>
+       <view class='subtitle' wx:if="{{type==3}}">已失败</view>
     </view>
   </view>
 
 
-  <view class='active_card flex-start' style='background:#f5f5f5;'>
+  <view class='active_card flex-start' style='background:#f5f5f5;' data-url='../../pages/index/matchDetail?id={{order.activity_id}}&status={{order.status_name}}' catchtap='navTo' >
     <view class='flex1'>
       <image src='{{order.cover_url}}'></image>
     </view>
@@ -64,11 +67,11 @@
     </view>
   </view>
 
-  <view class='section_card' style='margin:0 20rpx;'>
-    <view class='flex-between'>
+  <view class='section_card' style='margin:0 20rpx;' wx:if="{{type==2}}">
+    <view class='flex-between' data-url='/pages/fund/myInfo?id={{order.activity_id}}&order_sn={{order.order_sn}}' catchtap='navTo' >
       <view class='title'>我的信息</view>
       <view class='subtitle'>
-        <i-icon data-url='/pages/fund/myInfo?id={{order.activity_id}}&order_sn={{order.order_sn}}' catchtap='navTo' type="enter" size="14" color="#80848f" style='float:right;' />
+        <i-icon type="enter" size="14" color="#80848f" style='float:right;' />
       </view>
     </view>
   </view>
@@ -215,7 +218,7 @@
 
   </view>
 
-  <view class="actions  flex-start">
+  <view class="actions  flex-start" wx:if="{{type==1}}">
     <view class='flex1 action_item'>
       <image src='../../images/fund1.png'></image>
       <view>购买装备</view>
@@ -230,11 +233,18 @@
     </view>
   </view>
 
-  <painter style="position:fixed;top:-9999rpx" palette="{{erCodeTemplate}}" bind:imgOK="onErCodeImgOK" />
+  <view class="actions  flex-start" wx:else>
+    <view class='flex1 action_item'>
+      <image src='../../images/fund1.png'></image>
+      <view>购买装备</view>
+    </view>
+  </view>
+
+  <!-- <painter style="position:fixed;top:-9999rpx" palette="{{erCodeTemplate}}" bind:imgOK="onErCodeImgOK" /> -->
 
   <view class='cover' catchtap='showModal' wx:if="{{visible}}">
     <view class='shareWrap'>
-      <painter customStyle='margin-left:50rpx; margin-top:100rpx;' palette="{{template}}" bind:imgOK="onImgOK" />
+      <painter customStyle='margin-left:50rpx; margin-top:100rpx;' palette="{{erCodeTemplate}}" bind:imgOK="onImgOK" />
       <button class='btn btn1' open-type="share"> 转发</button>
       <button class='btn btn2' catchtap='saveImage'>保存</button>
     </view>

@@ -38,9 +38,11 @@
     </view>
     <view class="actions">
       <button form-type="submit">确认提交</button>
-      <view class='error'>提交后24小时内，有工作人员联系您,您也可以直接店家拨打工作人员电话 张凯：
-        <text>13877544659</text> 康华：
-        <text>13728311111</text>
+      <view class='error'>提交后24小时内，有工作人员联系您,您也可以直接店家拨打工作人员电话 
+       <block wx:for="{{contact_list}}" wx:key="key" >
+        {{item.name}}：
+        <text>{{item.phone}}</text>
+        </block>
       </view>
     </view>
   </form>

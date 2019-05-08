@@ -11,7 +11,7 @@
   <view class='list list_fund' wx:if="{{current == 'tab1'}}">
 
     <view class='list_item fund_item' wx:for="{{list1}}" wx:key="key">
-      <view class=" flex-start" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}' bindtap='navTo'>
+      <view class=" flex-start" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=1' bindtap='navTo'>
         <view class='flex1'>
           <image src='{{item.cover_url}}'></image>
         </view>
@@ -27,7 +27,7 @@
         <view class='fund_progress_wrap'> <i-progress status="wrong" percent="{{wxmlFromat.getFixedNumber((item.paid_amount/item.total_amount*100),2)}}"></i-progress></view>
         <view class='flex-around'>
           <i-button  inline size="small" shape="circle" type="info" data-url="/pages/fund/selfsupport?reset={{item.total_amount - item.paid_amount}}&order_sn={{item.order_sn}}"   bind:click="navTo">自己支持</i-button>
-          <i-button  inline size="small" shape="circle" type="success" data-url="/pages/fund/selfsupport" catchtap='navTo'>点击众筹</i-button>
+          <i-button  inline size="small" shape="circle" type="success" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=1' bindtap='navTo' >点击众筹</i-button>
         </view>
         <view>
         </view>
@@ -39,7 +39,7 @@
 
   <view class='list list_fund' wx:if="{{current == 'tab2'}}">
 
-    <view class='list_item fund_item flex-start' wx:for="{{list2}}" wx:key="key" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}' bindtap='navTo'>
+    <view class='list_item fund_item flex-start' wx:for="{{list2}}" wx:key="key" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=2' bindtap='navTo'>
       <view class='flex1'>
         <image src='{{item.cover_url}}'></image>
       </view>
@@ -55,7 +55,7 @@
 
   <view class='list list_fund' wx:if="{{current == 'tab3'}}">
 
-    <view class='list_item fund_item flex-start' wx:for="{{list3}}" wx:key="key" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}' bindtap='navTo'>
+    <view class='list_item fund_item flex-start' wx:for="{{list3}}" wx:key="key" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=3' bindtap='navTo'>
       <view class='flex1'>
         <image src='../../images/bg112.jpg'></image>
       </view>
