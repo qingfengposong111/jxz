@@ -51,6 +51,13 @@ Page({
       if (res.code == 0) {
         console.log(res);
         util.djToast("验证码已发送，请注意查收！")
+      }else{
+        util.djToast(res.msg);
+        _this.setData({
+          isSended: false,
+          sendTips: "获取验证码"
+        })
+        clearInterval(set);
       }
     });
   },

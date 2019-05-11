@@ -1,7 +1,7 @@
 <view class="container">
   <view class='list list_fund'>
 
-    <view class='list_item fund_item flex-start' wx:for="{{list}}" wx:key="key">
+    <view class='list_item fund_item flex-start' wx:for="{{list}}" wx:key="key" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=2&orderself=true'  bindtap='navTo'>
       <view class='flex1'>
         <image src='../../images/bg112.jpg'></image>
       </view>

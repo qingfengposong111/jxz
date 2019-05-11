@@ -15,7 +15,7 @@
         </view>
       </view>
       <view class='content'>{{item.content}}</view>
-      <image  mode='aspectFill'  src='{{item.cover_url}}'></image>
+      <image  mode='aspectFill'  src='{{item.cover_url}}' data-url='{{item.cover_url}}' bindtap='preImage'></image>
       <!-- <view class='flex-around com_bottom'>
         <view>
           <i-icon type="send" size="18" color="#80848f" />分享

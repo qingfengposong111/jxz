@@ -11,7 +11,11 @@ Page({
   },
 
   toWebUrl:function(e){
-    wx.navigateTo({ url: "../../pages/start/webView?url=" + e.currentTarget.dataset.url})
+    if (e.currentTarget.dataset.type === 'http'){
+      wx.navigateTo({ url: "/pages/start/webView?url=" + e.currentTarget.dataset.url })
+    }else{
+      wx.navigateTo({ url: e.currentTarget.dataset.url })
+    }
   },
   //系统设置
   getSysConfig: function () {
@@ -53,7 +57,9 @@ Page({
   /**---------------- 生命周期函数--监听页面加载------------------*/
   onLoad: function () {
    this.getBannerData();
-   this.getMatchList();
    this.getSysConfig();
+  },
+  onShow:function(){
+    this.getMatchList();
   }
 })

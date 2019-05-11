@@ -18,9 +18,17 @@ Page({
     my_rank:null,
     erCodeUrl:'',
     erCodeImageUrl:'',
+    image1Url:'',
+    image2Url: '',
     shareImgUrl:'',
-    type:'1'
+    type:'1',
+    orderself:false
   },
+
+  toWebUrl: function (e) {
+    wx.navigateTo({ url: "../../pages/start/webView?url=" + e.currentTarget.dataset.url })
+  },
+  
   handleChange({ detail }) {
     this.setData({
       current: detail.key
@@ -42,9 +50,9 @@ Page({
       template: this.palette()
     });
 
-    if (this.data.visible == false){
-      this.showModal1();
-    }
+    // if (this.data.visible == false){
+    //   this.showModal1();
+    // }
   },
   showModal1() {
     this.setData({
@@ -89,7 +97,7 @@ Page({
 
   getRangeList: function (type) {
     var _this = this
-    djRequest.djPost("/getActivityRankList", { "start": 0, "limit": 5, "type": type, "activity_id": _this.data.order.activity_id}, function (res) {
+    djRequest.djPost("/getActivityRankList", { "start": 0, "limit": 2, "type": type, "activity_id": _this.data.order.activity_id}, function (res) {
       if (res.code == 0) {
       //  console.log(res);
         if (_this.data.current == "tab1") {
@@ -123,7 +131,21 @@ Page({
     this.setData({
      erCodeImageUrl:e.detail.path
     })
-   // console.log(e);
+    console.log(e);
+  },
+
+  paletteImg1OK(e) {
+    this.setData({
+      image1Url: e.detail.path
+    })
+    console.log(e);
+  },
+
+  paletteImg2OK(e) {
+    this.setData({
+      image2Url: e.detail.path
+    })
+    console.log(e);
   },
 
   saveImage() {
@@ -136,12 +158,22 @@ Page({
 
     let path = '/pages/fund/fundShared';
     let param = encodeURIComponent('order_sn=' + options.order_sn);
-    let url = "https://act.yingtxx.cn/getReferQrcode?path=" + path + "&totalImg=1" + "&param=" + param + '&time=' + Date.parse(new Date());
+    let url = "https://act.yingtxx.cn/getReferQrcode?path=" + path + "&totalImg=0" + "&param=" + param + '&time=' + Date.parse(new Date());
     this.setData({
       erCodeUrl: url,
       order_sn: options.order_sn,
       type:options.type
     })
+
+    if(options.orderself){
+      wx.setNavigationBarTitle({
+        title: '订单详情',
+      })
+
+      this.setData({
+        orderself:true
+      })
+    }
 
     this.setData({
       erCodeTemplate: this.paletteErCodeImg()
@@ -189,64 +221,225 @@ Page({
    //画二维码
   paletteErCodeImg() {
     return ({
-      width: '650rpx',
-      height: '900rpx',
+      width: '150rpx',
+      height: '150rpx',
       views: [
         {
           type: 'image',
           url: this.data.erCodeUrl,
           css: {
             color: 'red',
-            width: '650rpx',
-            height: '900rpx',
+            width: '150rpx',
+            height: '150rpx',
           },
         }
       ],
     });
   },
 
-  //画分享界面
-  palette() {
+  //画二维码
+  paletteImg1() {
     return ({
-      width: '650rpx',
-      height: '900rpx',
-      borderRadius: "8rpx",
-      background: '../../images/bg2.png',
+      width: '710rpx',
+      height: '300rpx',
       views: [
         {
+          type: 'image',
+          url: this.data.order.cover_url,
+          css: {
+            color: 'red',
+            width: '710rpx',
+            height: '300rpx',
+          },
+        }
+      ],
+    });
+  },
+
+
+  //画二维码
+  paletteImg2() {
+    return ({
+      width: '80rpx',
+      height: '80rpx',
+      views: [
+        {
+          type: 'image',
+          url: app.globalData.userInfo.avatarUrl,
+          css: {
+            color: 'red',
+            width: '80rpx',
+            height: '80rpx',
+          },
+        }
+      ],
+    });
+  },
+
+
+  //画分享界面
+  palette() {
+    var reset_amount =  this.data.order.total_amount - this.data.order.paid_amount;
+    // debugger;
+    return ({
+      width: '710rpx',
+      height: '900rpx',
+      views: [
+        {
+          type: 'image',
+          url: this.data.order.cover_url,
+          css: {
+            width: '710rpx',
+            height: '300rpx',
+          },
+        },
+        {
           type: 'text',
-          text: "分享众筹",
+          text: this.data.order.title,
           css: [{
-            top: '70rpx',
-            left: '305rpx',
-            color: '#fff',
-            fontSize: '40rpx',
-            align: 'center',
+            top: '320rpx',
+            left: '20rpx',
+            color: '#333',
+            fontSize: '32rpx',
+            align: 'left',
             fontWeight: 'bold',
           }],
         },
         {
+          type: 'image',
+          url: app.globalData.userInfo.avatarUrl,
+          css: {
+            top: '380rpx',
+            left: '20rpx',
+            width: '80rpx',
+            height: '80rpx',
+          },
+        },
+        {
           type: 'text',
-          text: '保存图片,分享给朋友和朋友圈，让更多助您完成活动！',
+          text: app.globalData.userInfo.nickName,
           css: [{
-            top: '200rpx',
-            left: '145rpx',
+            top: '400rpx',
+            left: '120rpx',
             align: 'left',
-            width: '400rpx',
+            width: '200rpx',
             fontSize: '32rpx',
             lineHeight: '50rpx',
-            color: '#302C3D'
+            color: '#333333'
+          }],
+        },
+        {
+          type: 'text',
+          text: '我正在参加践行师举行的赛事，谢谢您来支持我!',
+          css: [{
+            top: '470rpx',
+            left: '20rpx',
+            color: '#333',
+            fontSize: '28rpx',
+            align: 'left'
+          }],
+        },
+        {
+          type: 'text',
+          text: this.data.order.total_amount,
+          css: [{
+            top: '540rpx',
+            left: '120rpx',
+            color: '#FF4F00',
+            fontSize: '50rpx',
+            align: 'center'
+          }],
+        },
+        {
+          type: 'text',
+          text: this.data.order.paid_amount,
+          css: [{
+            top: '540rpx',
+            left: '360rpx',
+            color: '#FF4F00',
+            fontSize: '50rpx',
+            align: 'center'
+          }],
+        },
+        {
+          type: 'text',
+          text: reset_amount+'',
+          css: [{
+            top: '540rpx',
+            left: '580rpx',
+            color: '#FF4F00',
+            fontSize: '50rpx',
+            align: 'center'
+          }],
+        },
+        {
+          type: 'text',
+          text: ' 目标金额（元）',
+          css: [{
+            top: '610rpx',
+            left: '120rpx',
+            color: '#888888',
+            fontSize: '30rpx',
+            align: 'center'
+          }],
+        },
+        {
+          type: 'text',
+          text: ' 已筹金额（元）',
+          css: [{
+            top: '610rpx',
+            left: '360rpx',
+            color: '#888888',
+            fontSize: '30rpx',
+            align: 'center'
+          }],
+        },
+        {
+          type: 'text',
+          text: ' 还需金额（元）',
+          css: [{
+            top: '610rpx',
+            left: '580rpx',
+            color: '#888888',
+            fontSize: '30rpx',
+            align: 'center'
+          }],
+        },
+        {
+          type: 'text',
+          text: '邀朋友筹千里就找践行师',
+          css: [{
+            bottom: '110rpx',
+            left: '20rpx',
+            align: 'left',
+            width: '420rpx',
+            fontSize: '36rpx',
+            lineHeight: '50rpx',
+            color: '#333333'
+          }],
+        },
+        {
+          type: 'text',
+          text: '长按识别小程序，立即帮忙',
+          css: [{
+            bottom: '40rpx',
+            left: '20rpx',
+            align: 'left',
+            width: '400rpx',
+            fontSize: '28rpx',
+            lineHeight: '50rpx',
+            color: '#d5d5d5'
           }],
         },
         {
           type: 'image',
           url: this.data.erCodeImageUrl,
           css: {
-            top: '380rpx',
-            left: '145rpx',
+            bottom: '40rpx',
+            right: '40rpx',
             color: 'red',
-            width: '360rpx',
-            height: '360rpx',
+            width: '150rpx',
+            height: '150rpx',
           },
         }
       ],

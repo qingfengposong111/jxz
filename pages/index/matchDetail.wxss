@@ -3,7 +3,7 @@ page{background: #f5f5f5; font-size: 24rpx; color: #302C3D;}
 .detail_header{width: 100%;}
 .detail_header image{height: 400rpx; width: 100%;}
 .detail_header .header_wrapper{background: #3478FF; color: #fff;height: 80rpx;position: relative; top: -4rpx;}
-.detail_header .header_wrapper .price{background: linear-gradient(0deg, #3478FF,#00F6FF);font-size: 36rpx;
+.detail_header .header_wrapper .price{background: linear-gradient(90deg, #3478FF,#00F6FF);font-size: 36rpx;
 line-height: 80rpx; border-top-right-radius: 40rpx; border-bottom-right-radius: 40rpx;}
 .detail_header .header_wrapper .time{text-align: center;}
 

@@ -8,7 +8,7 @@ Page({
     act:null,
     resetTime:"",
     timerID:null,
-    status:"进行中",
+    status:"报名已截止",
     activity_id:""
   },
   handleChange({

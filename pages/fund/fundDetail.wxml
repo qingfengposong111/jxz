@@ -8,7 +8,7 @@
 
   <view class='section_card'>
     <view class='flex-between'>
-      <view class='title'>我的众筹</view>
+      <view class='title' wx:if="{{!orderself}}">我的众筹</view>
       <view class='subtitle' wx:if="{{type==1}}">剩余
         <span>{{resetTime}}</span>天
       </view>
@@ -28,14 +28,14 @@
     </view>
   </view>
 
-  <view class='section_card'>
+  <view class='section_card' wx:if="{{!orderself}}">
     <view class='flex-between'>
       <view class='title'>{{order.end_date}}</view>
       <view class='subtitle'></view>
     </view>
   </view>
 
-  <view class='detail_data flex-around'>
+  <view class='detail_data flex-around' wx:if="{{!orderself}}">
     <view class='flex1'>
       <view class='num'>{{order.total_amount}}</view>
       <view>
@@ -56,7 +56,7 @@
     </view>
   </view>
 
-  <view class='fund_progress_wrap'>
+  <view class='fund_progress_wrap'  wx:if="{{!orderself}}">
     <i-progress status="wrong" percent="{{wxmlFromat.getFixedNumber((order.paid_amount/order.total_amount*100),2)}}"></i-progress>
   </view>
 
@@ -67,7 +67,7 @@
     </view>
   </view>
 
-  <view class='section_card' style='margin:0 20rpx;' wx:if="{{type==2}}">
+  <view class='section_card' style='margin:0 20rpx 20rpx 20rpx;' wx:if="{{type==2}}">
     <view class='flex-between' data-url='/pages/fund/myInfo?id={{order.activity_id}}&order_sn={{order.order_sn}}' catchtap='navTo' >
       <view class='title'>我的信息</view>
       <view class='subtitle'>
@@ -76,14 +76,14 @@
     </view>
   </view>
 
-  <view class='section_card'>
+  <!-- <view class='section_card'>
     <view class='flex-between'>
       <view class='title'>众筹攻略</view>
       <view class='subtitle'>
         <i-icon data-url='/pages/index/matchList' catchtap='navTo' type="enter" size="14" color="#80848f" style='float:right;' />
       </view>
     </view>
-  </view>
+  </view> -->
 
 
   <view class='range_list'>
@@ -95,7 +95,7 @@
 
     <view wx:if="{{current == 'tab1'}}">
       <view class='list'>
-        <view class='list_item flex-start'>
+        <!-- <view class='list_item flex-start'>
           <view class='flex2'>
             <image src='{{my_rank.header_img}}'></image>
           </view>
@@ -104,9 +104,9 @@
             <view class='comment'>{{my_rank.num}}</view>
           </view>
           <view class='flex1 counts'>
-            <!-- 8分钟 -->
+            8分钟
           </view>
-        </view>
+        </view> -->
 
         <view class='list_item flex-start' wx:for="{{rangeList1}}" wx:key="key" wx:for-index="index">
           <view class='flex2'>
@@ -127,7 +127,7 @@
 
     <view wx:if="{{current == 'tab2'}}">
       <view class='list'>
-        <view class='list_item flex-start'>
+        <!-- <view class='list_item flex-start'>
           <view class='flex2'>
             <image src='{{my_rank.header_img}}'></image>
           </view>
@@ -136,9 +136,9 @@
             <view class='comment'>{{my_rank.num}}</view>
           </view>
           <view class='flex1 counts'>
-            <!-- 8分钟 -->
+            8分钟
           </view>
-        </view>
+        </view> -->
 
         <view class='list_item flex-start' wx:for="{{rangeList2}}" wx:key="key" wx:for-index="index">
           <view class='flex2'>
@@ -158,7 +158,7 @@
 
     <view wx:if="{{current == 'tab3'}}">
       <view class='list'>
-        <view class='list_item flex-start'>
+        <!-- <view class='list_item flex-start'>
           <view class='flex2'>
             <image src='{{my_rank.header_img}}'></image>
           </view>
@@ -167,9 +167,9 @@
             <view class='comment'>{{my_rank.num}}</view>
           </view>
           <view class='flex1 counts'>
-            <!-- 8分钟 -->
+            8分钟
           </view>
-        </view>
+        </view> -->
 
         <view class='list_item flex-start' wx:for="{{rangeList3}}" wx:key="key" wx:for-index="index">
           <view class='flex2'>
@@ -210,7 +210,9 @@
         <view>{{item.name}}</view>
         <view class='comment'>{{item.text}}</view>
       </view>
-      <view class='flex1 counts'>
+      <view class='flex2 counts'>
+        <view>{{wxmlFromat.getSubString(item.create_time,5,11)}}</view>
+        <view class='comment'>￥{{item.amount}}</view>
         <!-- <i-icon type="browse" size="20" color="#80848f" />
         <i-icon type="message" size="20" color="#80848f" /> -->
       </view>
@@ -219,7 +221,7 @@
   </view>
 
   <view class="actions  flex-start" wx:if="{{type==1}}">
-    <view class='flex1 action_item'>
+    <view class='flex1 action_item' data-url='https://m.lijichefu.com/app/index.php?i=4&c=entry&m=ewei_shopv2&do=mobile' bindtap='toWebUrl'>
       <image src='../../images/fund1.png'></image>
       <view>购买装备</view>
     </view>
@@ -234,17 +236,19 @@
   </view>
 
   <view class="actions  flex-start" wx:else>
-    <view class='flex1 action_item'>
+    <view class='flex1 action_item'  data-url='https://m.lijichefu.com/app/index.php?i=4&c=entry&m=ewei_shopv2&do=mobile' bindtap='toWebUrl' >
       <image src='../../images/fund1.png'></image>
       <view>购买装备</view>
     </view>
   </view>
 
-  <!-- <painter style="position:fixed;top:-9999rpx" palette="{{erCodeTemplate}}" bind:imgOK="onErCodeImgOK" /> -->
+  <painter style="position:fixed;top:-9999rpx" palette="{{erCodeTemplate}}" bind:imgOK="onErCodeImgOK" />
+   <!-- <painter style="position:fixed;top:-9999rpx" palette="{{paletteImg1}}" bind:imgOK="paletteImg1OK" />
+    <painter style="position:fixed;top:-9999rpx" palette="{{paletteImg2}}" bind:imgOK="paletteImg2OK" /> -->
 
   <view class='cover' catchtap='showModal' wx:if="{{visible}}">
     <view class='shareWrap'>
-      <painter customStyle='margin-left:50rpx; margin-top:100rpx;' palette="{{erCodeTemplate}}" bind:imgOK="onImgOK" />
+      <painter customStyle='margin-left:20rpx; margin-top:100rpx;' palette="{{template}}" bind:imgOK="onImgOK" />
       <button class='btn btn1' open-type="share"> 转发</button>
       <button class='btn btn2' catchtap='saveImage'>保存</button>
     </view>

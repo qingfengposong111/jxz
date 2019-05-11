@@ -17,7 +17,7 @@
       <view class='flex2 time' wx:elif="{{status == '已结束'}}">
         <view style='font-size:28rpx;' > 活动{{status}}</view>
       </view>
-      <view class='flex2 time' wx:elif="{{status == '报名截止'}}">
+      <view class='flex2 time' wx:elif="{{status == '报名已截止'}}">
         <view style='font-size:28rpx;' > 活动{{status}}</view>
       </view>
     </view>
@@ -78,7 +78,7 @@
     <view class='status' wx:elif="{{status == '已结束'}}">
       活动{{status}}
     </view>
-    <view class='status' wx:elif="{{status == '报名截止'}}">
+    <view class='status' wx:elif="{{status == '报名已截止'}}">
       活动{{status}}
     </view>
   </view>

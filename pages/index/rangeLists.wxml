@@ -11,7 +11,7 @@
 
   <view wx:if="{{current == 'tab1'}}">
     <view class='list'>
-      <view class='list_item flex-start'>
+      <!-- <view class='list_item flex-start'>
         <view class='flex2'>
           <image src='{{my_rank.header_img}}'></image>
         </view>
@@ -20,9 +20,9 @@
           <view class='comment'>{{my_rank.num}}</view>
         </view>
         <view class='flex1 counts'>
-          <!-- 8分钟 -->
+          8分钟
         </view>
-      </view>
+      </view> -->
 
       <view class='list_item flex-start' wx:for="{{rangeList1}}" wx:key="key" wx:for-index="index">
         <view class='flex2'>
@@ -43,7 +43,7 @@
 
   <view wx:if="{{current == 'tab2'}}">
     <view class='list'>
-      <view class='list_item flex-start'>
+      <!-- <view class='list_item flex-start'>
         <view class='flex2'>
           <image src='{{my_rank.header_img}}'></image>
         </view>
@@ -52,9 +52,9 @@
           <view class='comment'>{{my_rank.num}}</view>
         </view>
         <view class='flex1 counts'>
-          <!-- 8分钟 -->
+          8分钟
         </view>
-      </view>
+      </view> -->
 
       <view class='list_item flex-start' wx:for="{{rangeList2}}" wx:key="key" wx:for-index="index">
         <view class='flex2'>
@@ -74,7 +74,7 @@
 
   <view wx:if="{{current == 'tab3'}}">
     <view class='list'>
-      <view class='list_item flex-start'>
+      <!-- <view class='list_item flex-start'>
         <view class='flex2'>
           <image src='{{my_rank.header_img}}'></image>
         </view>
@@ -83,9 +83,9 @@
           <view class='comment'>{{my_rank.num}}</view>
         </view>
         <view class='flex1 counts'>
-          <!-- 8分钟 -->
+          8分钟
         </view>
-      </view>
+      </view> -->
 
       <view class='list_item flex-start' wx:for="{{rangeList3}}" wx:key="key" wx:for-index="index">
         <view class='flex2'>

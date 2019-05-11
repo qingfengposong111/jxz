@@ -20,7 +20,8 @@ Page({
   bindRegionChange(e) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      region: e.detail.value
+      region: e.detail.value,
+      area: e.detail.value,
     })
   },
 
@@ -74,9 +75,9 @@ Page({
     this.setData({
       selected_img: app.globalData.loginUserInfo.header_img,
       cover: app.globalData.loginUserInfo.header_img,
-      birthday: app.globalData.loginUserInfo.birthday,
+      birthday: app.globalData.loginUserInfo.birthday == '' ? util.getCurrentDate(): app.globalData.loginUserInfo.birthday,
       sex: app.globalData.loginUserInfo.sex,
-      area: app.globalData.loginUserInfo.area,
+      area: app.globalData.loginUserInfo.area.length == 0 ? ['广东省', '广州市', '海珠区']: app.globalData.loginUserInfo.area,
       note: app.globalData.loginUserInfo.note,
       name: app.globalData.loginUserInfo.name,
     })
