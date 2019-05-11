@@ -72,6 +72,8 @@ Page({
        // console.log(res);
         app.globalData.userPhone = _this.data.phone
         wx.navigateBack();
+      }else{
+        util.djToast(res.msg);
       }
     });
   },
