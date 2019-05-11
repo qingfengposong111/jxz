@@ -26,7 +26,7 @@ var defaultContact = {
   have_zhongshu: 0,
   height: "",
   id_card: "",
-  insurer_type:1,
+  insurer_type:0,
   is_single: 0,
   job: "",
   muslim: 0,

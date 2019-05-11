@@ -115,7 +115,7 @@
         <span>*</span>
       </view>
       <view class='flex1'>
-        <input name="job" value='{{contactInfo.job}}' placeholder='输入您所在公司或学校的职位'></input>
+        <input name="job" value='{{contactInfo.job}}' placeholder='请输入职位'></input>
       </view>
     </view>
     <view class='form_item flex-between max_margin'>

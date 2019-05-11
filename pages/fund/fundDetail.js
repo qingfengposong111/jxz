@@ -164,7 +164,6 @@ Page({
       order_sn: options.order_sn,
       type:options.type
     })
-
     if(options.orderself){
       wx.setNavigationBarTitle({
         title: '订单详情',
