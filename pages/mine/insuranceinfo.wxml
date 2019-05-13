@@ -12,7 +12,7 @@
 
     <view class='list'>
       <view class='list_item' wx:for="{{item.user_list}}" wx:for-item="obj" wx:key="key">
-        <view class='item_title'>{{obj.hotel_title}}
+        <view class='item_title'>{{obj.insurer_title}}
           <span>{{obj.name}}</span>
         </view>
         <view class='item_comtent'>

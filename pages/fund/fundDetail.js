@@ -22,7 +22,8 @@ Page({
     image2Url: '',
     shareImgUrl:'',
     type:'1',
-    orderself:false
+    orderself:false,
+    operation:null,
   },
 
   toWebUrl: function (e) {
@@ -162,7 +163,8 @@ Page({
     this.setData({
       erCodeUrl: url,
       order_sn: options.order_sn,
-      type:options.type
+      type:options.type,
+      save_info: options.save_info,
     })
     if(options.orderself){
       wx.setNavigationBarTitle({

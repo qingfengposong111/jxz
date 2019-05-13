@@ -167,7 +167,8 @@ Page({
           cover:res.data.cover,
           arrive_time:res.data.arrive_time,
           back_time:res.data.back_time,
-          bloodTypeIndex:index
+          bloodTypeIndex:index,
+          region:res.data.area,
         })
       }
     });

@@ -153,7 +153,9 @@ Page({
              arrive_time: res.data.arrive_time,
              back_time: res.data.back_time,
              bloodTypeIndex: index,
-             selectHotelId: res.data.hotel_id
+             selectHotelId: res.data.hotel_id,
+             selectedIndexs: res.data.link_man_list,
+             region:res.data.area,
            })
          }
       }
