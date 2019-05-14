@@ -24,7 +24,7 @@ Page({
     if (detail.key == "tab1") {
       this.getRangeList("speed");
     } else if (detail.key == "tab2") {
-      this.getRangeList("pupular");
+      this.getRangeList("popular");
     } else if (detail.key == "tab3") {
       this.getRangeList("rich");
     }
@@ -43,12 +43,13 @@ Page({
       if (res.code == 0) {
         //console.log(res);
         var date3 = new Date(res.data.end_date).getTime() - new Date().getTime()  //时间差的毫秒数
-        var days = Math.floor(date3 / (24 * 3600 * 1000))
+        var days = Math.floor(date3 / (24 * 3600 * 1000)) +2;
         _this.setData({
           order: res.data,
           resetTime: days
         })
         _this.getRangeList("speed");
+        wx.clearStorage("shared_order_sn");
       }
     });
   },
@@ -61,6 +62,7 @@ Page({
         _this.setData({
           supportList: res.data.list,
         })
+        wx.clearStorage("shared_order_sn");
       }
     });
   },
@@ -95,6 +97,12 @@ Page({
     this.setData({
       order_sn: options.order_sn
     })
+
+    wx.setStorage({
+      key: 'shared_order_sn',
+      data: options.order_sn,
+    })
+
     this.getOrderDetail();
     this.getSupportList();
   },
@@ -117,9 +125,18 @@ Page({
 
   },
   onShareAppMessage: function () {
+    this.newActivityShare();
     return {
       title: '践行师邀请您参与' + this.data.order.title + '的众筹活动，知行合一，从我做起！！',
       path: 'pages/fund/fundShared?order_sn=' + this.data.order_sn,
     };
-  }
+  },
+  newActivityShare: function () {
+    var _this = this
+    djRequest.djPost("/newActivityShare", { "activity_id": _this.data.order.activity_id }, function (res) {
+      if (res.code == 0) {
+        console.log(res);
+      }
+    });
+  },
 })

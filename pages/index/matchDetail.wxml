@@ -71,7 +71,7 @@
 
   <view class="actions">
     <view  class="flex-start" wx:if="{{status == '报名中'}}">
-      <button class='flex1 active1' data-url='../../pages/index/sureOrder?type=0' catchtap='navTo'>我要自付</button>
+      <button class='flex1 active1' data-url='../../pages/index/sureOrder?type=0&save_info=0' catchtap='navTo'>我要自付</button>
       <!-- <button class='flex1 active2' data-url='../../pages/index/sureOrder?type=1' catchtap='navTo'>我要众筹</button> -->
       <button class='flex1 active2'  catchtap='myHelper'>我要众筹</button>
     </view>

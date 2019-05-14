@@ -19,7 +19,7 @@ Page({
     if (detail.key == "tab1") {
       this.getRangeList("speed");
     } else if (detail.key == "tab2") {
-      this.getRangeList("pupular");
+      this.getRangeList("popular");
     } else if (detail.key == "tab3") {
       this.getRangeList("rich");
     }

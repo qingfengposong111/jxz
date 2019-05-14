@@ -9,7 +9,7 @@
   <view class='section_card'>
     <view class='flex-between'>
       <view class='flex1'>
-        <image src='../../images/bg112.jpg'></image>
+        <image src='{{order.header_img}}'></image>
       </view>
       <view class='flex3 flex-ms'>
         <view class='title'>{{order.user_name}}的众筹</view>

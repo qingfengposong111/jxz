@@ -95,8 +95,25 @@ const login = function Login() {
     console.log(res);
     if (res.code == 0) {
       config.Auth = res.data.auth
-      wx.reLaunch({
-        url: '../index/index'
+      config.Refer = res.data.user_info.code,
+      wx.getStorage({
+        key: 'shared_order_sn',
+        success: function(res) {
+           if(res.data == undefined || res.data == ""){
+             wx.reLaunch({
+               url: '../index/index'
+             })
+           }else{
+             wx.navigateTo({
+               url: '/pages/fund/fundShared?order_sn='+res.data,
+             })
+           }
+        },
+        fail:function(){
+          wx.reLaunch({
+            url: '../index/index'
+          })
+        }
       })
     } else {
       wx.reLaunch({

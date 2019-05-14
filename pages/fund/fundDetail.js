@@ -1,6 +1,7 @@
 const app = getApp()
 const djRequest = require('../../utils/request.js');
 const util = require('../../utils/util.js');
+var config = require('../../utils/config.js');
 
 Page({
   imagePath: '',
@@ -37,7 +38,7 @@ Page({
    if(detail.key == "tab1"){
      this.getRangeList("speed");
    } else if (detail.key == "tab2") {
-     this.getRangeList("pupular");
+     this.getRangeList("popular");
    } else if (detail.key == "tab3") {
      this.getRangeList("rich");
    }
@@ -74,7 +75,7 @@ Page({
       if (res.code == 0) {
         //console.log(res);
         var date3 = new Date(res.data.end_date).getTime() - new Date().getTime()  //时间差的毫秒数
-        var days = Math.floor(date3 / (24 * 3600 * 1000))
+        var days = Math.floor(date3 / (24 * 3600 * 1000))+2
         _this.setData({
           order: res.data,
           resetTime: days
@@ -158,7 +159,7 @@ Page({
   onLoad: function (options) {
 
     let path = '/pages/fund/fundShared';
-    let param = encodeURIComponent('order_sn=' + options.order_sn);
+    let param = encodeURIComponent('order_sn=' + options.order_sn +'&refer='+config.Refer);
     let url = "https://act.yingtxx.cn/getReferQrcode?path=" + path + "&totalImg=0" + "&param=" + param + '&time=' + Date.parse(new Date());
     this.setData({
       erCodeUrl: url,
@@ -204,19 +205,30 @@ Page({
   onShareAppMessage: function (opt) {
     if(opt.from === 'button'){
       console.log(this.data.shareImgUrl,333);
+      this.newActivityShare();
       return {
         title: '践行师邀请您参与' + this.data.order.title + '的众筹活动，知行合一，从我做起！！',
         path: 'pages/fund/fundShared?order_sn=' + this.data.order_sn,
         imageUrl:this.data.shareImgUrl
       };
-
     }else{
+      this.newActivityShare();
       return {
         title: '践行师邀请您参与' + this.data.order.title + '的众筹活动，知行合一，从我做起！！',
         path: 'pages/fund/fundShared?order_sn=' + this.data.order_sn,
       }
     } 
   },
+
+  newActivityShare: function () {
+    var _this = this
+    djRequest.djPost("/newActivityShare", { "activity_id": _this.data.order.activity_id}, function (res) {
+      if (res.code == 0) {
+        console.log(res);
+      }
+    });
+  },
+
 
  /**--------------------分享画板---------------------------*/
    //画二维码

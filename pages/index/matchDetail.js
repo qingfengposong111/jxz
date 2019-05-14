@@ -31,11 +31,11 @@ Page({
       if (res.code == 0) {
         if (res.data.order_sn == ""){
           wx.navigateTo({
-            url: '../../pages/index/sureOrder?type=1'
+            url: '../../pages/index/sureOrder?type=1&save_info=0'
           })
         }else{
           wx.navigateTo({
-            url: '/pages/fund/fundDetail?order_sn=' + res.data.order_sn+'&type=1'
+            url: '/pages/fund/fundDetail?order_sn=' + res.data.order_sn +'&type=1save_info=0'
           })
         }
       }
@@ -69,7 +69,7 @@ Page({
   setAInterval:function(){
     var date1 = new Date();  //开始时间
     var date2 = new Date(this.data.act.end_date);    //结束时间
-    var date3 = date2.getTime() - date1.getTime()  //时间差的毫秒数
+    var date3 = 24 * 3600 * 1000 + (date2.getTime() - date1.getTime())   //时间差的毫秒数
     var _this = this;
     var timerID =  setInterval(function(){
        date3 = date3-1000

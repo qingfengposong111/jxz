@@ -11,7 +11,7 @@
   <view class='list list_fund' wx:if="{{current == 'tab1'}}">
 
     <view class='list_item fund_item' wx:for="{{list1}}" wx:key="key">
-      <view class=" flex-start" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=1' bindtap='navTo'>
+      <view class=" flex-start" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=1&save_info={{item.operation.save_info}}' bindtap='navTo'>
         <view class='flex1'>
           <image src='{{item.cover_url}}'></image>
         </view>
@@ -39,7 +39,7 @@
 
   <view class='list list_fund' wx:if="{{current == 'tab2'}}">
 
-    <view class='list_item fund_item flex-start' wx:for="{{list2}}" wx:key="key" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=2' bindtap='navTo'>
+    <view class='list_item fund_item flex-start' wx:for="{{list2}}" wx:key="key" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=2&save_info={{item.operation.save_info}}' bindtap='navTo'>
       <view class='flex1'>
         <image src='{{item.cover_url}}'></image>
       </view>
@@ -55,7 +55,7 @@
 
   <view class='list list_fund' wx:if="{{current == 'tab3'}}">
 
-    <view class='list_item fund_item flex-start' wx:for="{{list3}}" wx:key="key" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=3' bindtap='navTo'>
+    <view class='list_item fund_item flex-start' wx:for="{{list3}}" wx:key="key" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=3&save_info={{item.operation.save_info}}' bindtap='navTo'>
       <view class='flex1'>
         <image src='../../images/bg112.jpg'></image>
       </view>

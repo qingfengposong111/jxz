@@ -7,9 +7,15 @@ function Get(url, data, cb) {
     data: data,
     header: {
       "Content-Type": "application/json",
-      "Auth": config.Auth
+      "Auth": config.Auth,
+      "Refer":config.Refer
     },
     success: (res) => {
+      if (res.data.code === 2000) {
+        wx.navigateTo({
+          url: '/pages/start/start',
+        })
+      }
       typeof cb == "function" && cb(res.data, "");
       wx.hideNavigationBarLoading();//顶部隐藏loading效果
     },
@@ -30,9 +36,15 @@ function Post(url, data, cb) {
     header: {
       "Content-Type": "application/json",
       "Auth": config.Auth,
+      "Refer": config.Refer
       // "Content-Type": "application/x-www-form-urlencoded"//跨域请求
     },
     success: (res) => {
+      if(res.data.code === 2000){
+        wx.navigateTo({
+          url: '/pages/start/start',
+        })
+      }
       typeof cb == "function" && cb(res.data, "");
     },
     fail: (err) => {
