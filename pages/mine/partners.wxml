@@ -12,8 +12,9 @@
       </view> -->
 
       <view class='withdraw flex-start'>
-        <view class='flex1 btn' style='margin-right:20rpx;' data-url='/pages/fund/addCard' catchtap='navTo'>提现银行卡
-          <view>暂无银行卡，去添加</view>
+        <view class='flex1 btn' style='margin-right:20rpx;' >提现银行卡
+          <view  wx:if='{{userinfo.bank_card.length >0}}'>{{userinfo.bank_card}}</view>
+          <view data-url='/pages/fund/addCard' catchtap='navTo' wx:else>暂无银行卡，去添加</view>
         </view>
         <view class='flex1 btn' style='line-height:90rpx;' catchtap="showModal">
           申请积分提现

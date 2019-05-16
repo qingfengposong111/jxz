@@ -6,20 +6,20 @@
       <view class='flex-start item'>
         <view class='flex2'>真实姓名</view>
         <view class='flex5'>
-          <input placeholder="姓名" />
+          <input placeholder="请输入真实姓名" name="real_name" value="{{userinfo.real_name}}"/>
         </view>
       </view>
        <view class='flex-start item'>
         <view class='flex2'>联系电话</view>
         <view class='flex5'>
-          <input value="{{phone}}" type="number" bindinput="phoneChange" maxlength="11" placeholder="请输入手机号码" />
+          <input name="phone" value="{{userinfo.phone}}" type="number" bindinput="phoneChange" maxlength="11" placeholder="请输入手机号码" />
         </view>
       </view>
        <view class='flex-start item'>
         <view class='flex2'>验证码</view>
         <view class='flex5 input_wrap flex-between'>
-          <input class='flex3' value="{{cerCode}}" type="number" bindinput="cerCodeChange" placeholder="验证码" />
-        <span class="code flex2" catchtap='sendCode'>{{sendTips}}</span>
+          <input class='flex3'  name="code" value="{{cerCode}}" type="number" bindinput="cerCodeChange" placeholder="请输入验证码" />
+        <span class="code flex3" catchtap='sendCode'>{{sendTips}}</span>
         </view>
       </view>
     </view>
@@ -29,18 +29,18 @@
        <view class='flex-start item'>
         <view class='flex2'>银行卡号</view>
         <view class='flex5'>
-          <input value="{{phone}}" type="number" bindinput="phoneChange" maxlength="11" placeholder="请输入银行卡号" />
+          <input name="bank_card" value="{{userinfo.bank_card}}" type="number"  placeholder="请输入银行卡号" />
         </view>
       </view>
        <view class='flex-start item'>
         <view class='flex2'>开户行</view>
         <view class='flex5'>
-          <input placeholder="请输入开户行" />
+          <input name="bank" placeholder="请输入开户行" value="{{userinfo.bank}}" />
         </view>
       </view>
     </view>
-  </form>
-  <view class="actions">
-    <button catchtap='sureBlind'>确认绑定</button>
+    <view class="actions">
+    <button form-type="submit">确认绑定</button>
   </view>
+  </form>
 </view>

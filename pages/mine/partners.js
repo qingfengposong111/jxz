@@ -4,6 +4,7 @@ const util = require('../../utils/util.js');
 
 Page({
   data: {
+    userinfo:null,
     visible: false,
     current: 'tab1',
     sum:0,
@@ -81,6 +82,9 @@ Page({
   },
   /**--------------------生命周期函数--监听页面加载---------------------------*/
   onLoad: function (options) {
+    this.setData({
+      userinfo: app.globalData.loginUserInfo
+    })
     this.getLogList()
   },
   onReady: function () {

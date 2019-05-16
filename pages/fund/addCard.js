@@ -6,7 +6,8 @@ Page({
     phone: "",
     isSended: false,
     sendTips: "获取验证码",
-    cerCode: ""
+    cerCode: "",
+    userinfo: null,
   },
 
   navTo: function (e) {
@@ -47,7 +48,7 @@ Page({
     }, 60000);
 
     var _this = this
-    djRequest.djPost("/sendSms", { "phone": this.data.phone, "sms_type": "bind_phone" }, function (res) {
+    djRequest.djPost("/sendSms", { "phone": this.data.phone, "sms_type": "bind_bank_card" }, function (res) {
       if (res.code == 0) {
         console.log(res);
         util.djToast("验证码已发送，请注意查收！")
@@ -62,15 +63,20 @@ Page({
     });
   },
 
-  sureBlind: function () {
-    if (!util.availablePhone(this.data.phone)) return;
-    if (!util.isNotNull(this.data.cerCode, "验证码")) return;
+  formSubmit: function (e) {
+    var data = e.detail.value;
+    // 校验表单
+    if (!util.isNotNull(data.real_name, "真实姓名")) return;
+    if (!util.availablePhone(data.phone)) return;
+    if (!util.isNotNull(data.code, "验证码")) return;
+    if (!util.isNotNull(data.bank, "开户行")) return;
+    if (!util.isNotNull(data.bank_card, "银行卡号")) return;
 
     var _this = this
-    djRequest.djPost("/bindPhone", { "phone": _this.data.phone, "code": _this.data.cerCode }, function (res) {
+    djRequest.djPost("/bindBandCard", data, function (res) {
       if (res.code == 0) {
         // console.log(res);
-        app.globalData.userPhone = _this.data.phone
+        app.globalData.userInfo.bank_card = data.bank_card
         wx.navigateBack();
       } else {
         util.djToast(res.msg);
@@ -79,7 +85,10 @@ Page({
   },
   /**--------------------生命周期函数--监听页面加载---------------------------*/
   onLoad: function (options) {
-
+    this.setData({
+      userinfo: app.globalData.loginUserInfo,
+      phone: app.globalData.loginUserInfo.phone,
+    })
   },
   onReady: function () {
 
