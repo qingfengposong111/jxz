@@ -1,12 +1,12 @@
 /* pages/mine/partners.wxss */
 page{background: #f5f5f5;}
 .fixed_header{position: fixed; top: 0; z-index: 99; width: 100%;}
-.partners_header{background: linear-gradient(2deg, #3478FF,#00B9FF); height: 240rpx;width: 100%; text-align: center; color: #fff; font-size: 28rpx; display: flex; flex-direction: column; justify-content: center;}
+.partners_header{background: linear-gradient(2deg, #3478FF,#00B9FF); height: 360rpx;width: 100%; text-align: center; color: #fff; font-size: 28rpx; display: flex; flex-direction: column; justify-content: center;}
 .partners_header .income{font-size: 48rpx;}
-.partners_header .withdraw{font-size: 32rpx; text-align: center; margin-top: 20rpx;}
-.partners_header .withdraw span{border: 1px solid #d5d5d5; padding: 10rpx; border-radius: 8rpx;}
+.partners_header .withdraw{font-size: 32rpx; text-align: center; margin-top: 20rpx; padding: 20rpx;}
+.partners_header .withdraw .btn{border: 1px solid #d5d5d5; padding: 10rpx; border-radius: 8rpx; height: 90rpx;}
 .jx_tabs{width: 100%; background: #fff; }
-.list{margin-top: 340rpx; width: 100%;}
+.list{margin-top: 460rpx; width: 100%;}
 
 .list_partner_item{background: #fff; height: 100rpx; margin: 0 20rpx 20rpx 20rpx; padding: 20rpx; border-radius: 8rpx;}
 .list_partner_item .name{font-size: 32rpx; line-height: 60rpx; color: #302C3D;}

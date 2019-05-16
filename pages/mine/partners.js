@@ -10,6 +10,9 @@ Page({
     list1: [],
     list2: [],
   },
+  navTo: function (e) {
+    wx.navigateTo({ url: e.currentTarget.dataset.url })
+  },
   showModal() {
    if (this.data.sum == 0) {util.djToast("您暂时没有可提现的积分！"); return;} 
    var _this = this;

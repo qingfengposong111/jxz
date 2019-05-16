@@ -39,7 +39,8 @@
     "pages/fund/myInfo",
     "pages/fund/fundDetail",
     "pages/fund/fundShared",
-    "pages/fund/selectFriends"
+    "pages/fund/selectFriends",
+    "pages/fund/addCard"
   ],
   "window": {
     "backgroundTextStyle": "dark",
