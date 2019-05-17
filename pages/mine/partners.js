@@ -91,7 +91,9 @@ Page({
 
   },
   onShow: function () {
-
+    this.setData({
+      userinfo: app.globalData.loginUserInfo
+    })
   },
   onHide: function () {
 

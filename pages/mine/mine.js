@@ -6,6 +6,7 @@ Page({
   data: {
     loginUserInfo:null,
     visible1: false,
+    filePath:''
   },
   navTo:function(e){
     wx.navigateTo({ url: e.currentTarget.dataset.url})
@@ -24,6 +25,18 @@ Page({
           loginUserInfo: res.data
         })
       }
+    });
+  },
+
+  onImgOK(e) {
+    this.setData({
+      shareImgUrl: e.detail.path
+    })
+  },
+
+  saveImage() {
+    wx.saveImageToPhotosAlbum({
+      filePath: this.data.shareImgUrl,
     });
   },
 
@@ -49,8 +62,14 @@ Page({
   onReachBottom: function () {
 
   },
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (opt) {
+    if (opt.from === 'button') {
+      console.log(this.data.shareImgUrl, 333);
+      return {
+        title: '践行师，知行合一，从我做起！！',
+        imageUrl: this.data.shareImgUrl
+      };
+    } 
   },
   showModal1() {
     this.setData({

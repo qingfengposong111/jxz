@@ -71,10 +71,24 @@ Page({
               signType: 'MD5',
               paySign: pay_data.paySign,
               success(res) { 
-               wx.navigateBack();
+                wx.showModal({
+                  title: '',
+                  showCancel: false,
+                  content: '订单支付完成',
+                  confirmText: '查看详情',
+                  success(res) {
+                    if (res.confirm) {
+                      wx.navigateTo({
+                        url: '../fund/fundDetail?order_sn=' + _res.data.order_sn + '&buy_type=' + parseInt(_this.data.orderType),
+                      })
+                    } else if (res.cancel) {
+                      //console.log('用户点击取消')
+                    }
+                  }
+                })
               },
               fail(res) { 
-                wx.navigateBack();
+               // wx.navigateBack();
               }
             })
           }

@@ -79,7 +79,7 @@
 
    <view class='cover' catchtap='showModal1' wx:if="{{visible1}}">
     <painter customStyle='margin-left:50rpx; margin-top:150rpx;' palette="{{template1}}" bind:imgOK="onImgOK" />
-    <!-- <button class='btn' open-type="share"> 转发</button>
-    <button class='btn' catchtap='saveImage'>保存</button> -->
+    <button class='btn btn1' open-type="share"> 转发</button>
+    <button class='btn btn2' catchtap='saveImage'>保存</button>
   </view>
 </view>
