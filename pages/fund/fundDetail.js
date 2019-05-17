@@ -159,7 +159,7 @@ Page({
   onLoad: function (options) {
 
     let path = '/pages/fund/fundShared';
-    let param = encodeURIComponent('order_sn=' + options.order_sn +'&refer='+config.Refer);
+    let param = encodeURIComponent('order_sn=' + options.order_sn +'&refer='+config.Code);
     let url = "https://act.yingtxx.cn/getReferQrcode?path=" + path + "&totalImg=0" + "&param=" + param + '&time=' + Date.parse(new Date());
     this.setData({
       erCodeUrl: url,
@@ -208,14 +208,14 @@ Page({
       this.newActivityShare();
       return {
         title: '践行师邀请您参与' + this.data.order.title + '的众筹活动，知行合一，从我做起！！',
-        path: 'pages/fund/fundShared?order_sn=' + this.data.order_sn,
+        path: 'pages/fund/fundShared?order_sn=' + this.data.order_sn + '&refer=' + config.Code,
         imageUrl:this.data.shareImgUrl
       };
     }else{
       this.newActivityShare();
       return {
         title: '践行师邀请您参与' + this.data.order.title + '的众筹活动，知行合一，从我做起！！',
-        path: 'pages/fund/fundShared?order_sn=' + this.data.order_sn,
+        path: 'pages/fund/fundShared?order_sn=' + this.data.order_sn + '&refer=' + config.Code,
       }
     } 
   },

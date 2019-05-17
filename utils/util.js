@@ -95,7 +95,7 @@ const login = function Login() {
     console.log(res);
     if (res.code == 0) {
       config.Auth = res.data.auth
-      config.Refer = res.data.user_info.code,
+      config.Code = res.data.user_info.code,
       wx.getStorage({
         key: 'shared_order_sn',
         success: function(res) {

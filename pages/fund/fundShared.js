@@ -1,6 +1,7 @@
 const app = getApp()
 const djRequest = require('../../utils/request.js');
 const util = require('../../utils/util.js');
+var config = require('../../utils/config.js');
 Page({
   data: {
     current: 'tab1',
@@ -71,7 +72,6 @@ Page({
         _this.setData({
           supportList: res.data.list,
         })
-        wx.clearStorage("shared_order_sn");
       }
     });
   },
@@ -103,6 +103,9 @@ Page({
 
   /**--------------------生命周期函数--监听页面加载---------------------------*/
   onLoad: function (options) {
+    if (options.refer != undefined && options.refer != ''){
+      config.Refer = options.refer
+    }
     this.setData({
       order_sn: options.order_sn
     })

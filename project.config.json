@@ -67,7 +67,7 @@
 					"id": 3,
 					"name": "mine222",
 					"pathName": "pages/fund/fundShared",
-					"query": "order_sn=119051400003",
+					"query": "order_sn=119051400003&refer=12",
 					"scene": null
 				}
 			]

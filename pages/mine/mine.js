@@ -53,7 +53,7 @@ Page({
   /**---------------- 生命周期函数--监听页面加载------------------*/
   onLoad: function (options) {
     let path = '/pages/start/start';
-    let param = encodeURIComponent('&refer=' + config.Refer);
+    let param = encodeURIComponent('&refer=' + config.Code);
     let url = "https://act.yingtxx.cn/getReferQrcode?path=" + path + "&totalImg=0" + "&param=" + param + '&time=' + Date.parse(new Date());
     this.setData({
       erCodeUrl: url,
