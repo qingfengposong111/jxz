@@ -1,12 +1,15 @@
 // pages/mine/mine.js
 const app = getApp()
 const djRequest = require('../../utils/request.js');
+var config = require('../../utils/config.js');
 Page({
   /*------------------ 页面的初始数据---------------------------*/
   data: {
     loginUserInfo:null,
     visible1: false,
-    filePath:''
+    filePath:'',
+    erCodeUrl:'',
+    erCodeImageUrl:''
   },
   navTo:function(e){
     wx.navigateTo({ url: e.currentTarget.dataset.url})
@@ -34,6 +37,13 @@ Page({
     })
   },
 
+  onErCodeImgOK(e) {
+    this.setData({
+      erCodeImageUrl: e.detail.path
+    })
+    console.log(e);
+  },
+
   saveImage() {
     wx.saveImageToPhotosAlbum({
       filePath: this.data.shareImgUrl,
@@ -42,7 +52,17 @@ Page({
 
   /**---------------- 生命周期函数--监听页面加载------------------*/
   onLoad: function (options) {
-  
+    let path = '/pages/start/start';
+    let param = encodeURIComponent('&refer=' + config.Refer);
+    let url = "https://act.yingtxx.cn/getReferQrcode?path=" + path + "&totalImg=0" + "&param=" + param + '&time=' + Date.parse(new Date());
+    this.setData({
+      erCodeUrl: url,
+    })
+
+    this.setData({
+      erCodeTemplate: this.paletteErCodeImg()
+    })
+
   },
   onReady: function () {
 
@@ -80,6 +100,25 @@ Page({
     });
 
   },
+
+  //画二维码
+  paletteErCodeImg() {
+    return ({
+      width: '450rpx',
+      height: '450rpx',
+      views: [
+        {
+          type: 'image',
+          url: this.data.erCodeUrl,
+          css: {
+            color: 'red',
+            width: '450rpx',
+            height: '450rpx',
+          },
+        }
+      ],
+    });
+  },
   //画分享关注
   paletteAttr() {
     return ({
@@ -115,7 +154,7 @@ Page({
         },
         {
           type: 'image',
-          url: '../../images/code.png',
+          url: this.data.erCodeImageUrl,
           css: {
             top: '380rpx',
             left: '145rpx',

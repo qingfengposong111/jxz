@@ -76,6 +76,7 @@
     </view>
   </view>
 
+  <painter style="position:fixed;top:-9999rpx" palette="{{erCodeTemplate}}" bind:imgOK="onErCodeImgOK" />
 
    <view class='cover' catchtap='showModal1' wx:if="{{visible1}}">
     <painter customStyle='margin-left:50rpx; margin-top:150rpx;' palette="{{template1}}" bind:imgOK="onImgOK" />
