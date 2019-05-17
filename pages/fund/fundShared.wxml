@@ -202,6 +202,10 @@
     </view>
   </view>
 
+<view class="home" data-url='/pages/index/index' catchtap='swithchTo'>
+   <image src='/images/home.png'></image>
+</view>
+
   <view class="actions  flex-start">
     <view class='flex1'>
       <button class='button1' data-url='/pages/index/matchDetail?id={{order.activity_id}}' catchtap='navTo'>我要同行</button>

@@ -37,6 +37,14 @@ Page({
   navTo: function (e) {
     wx.navigateTo({ url: e.currentTarget.dataset.url })
   },
+
+  swithchTo: function (e) {
+    wx.switchTab({
+      url: e.currentTarget.dataset.url 
+    })
+  },
+
+  
   getOrderDetail: function () {
     var _this = this
     djRequest.djPost("/activityOrderDetail", { "order_sn": _this.data.order_sn }, function (res) {
@@ -48,6 +56,7 @@ Page({
           order: res.data,
           resetTime: days
         })
+        _this.getSupportList();
         _this.getRangeList("speed");
         wx.clearStorage("shared_order_sn");
       }
@@ -104,7 +113,6 @@ Page({
     })
 
     this.getOrderDetail();
-    this.getSupportList();
   },
   onReady: function () {
 
