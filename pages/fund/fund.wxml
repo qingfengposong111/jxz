@@ -57,7 +57,7 @@
 
     <view class='list_item fund_item flex-start' wx:for="{{list3}}" wx:key="key" data-url='/pages/fund/fundDetail?order_sn={{item.order_sn}}&type=3&save_info={{item.operation.save_info}}' bindtap='navTo'>
       <view class='flex1'>
-        <image src='../../images/bg112.jpg'></image>
+        <image src='{{item.cover_url}}'></image>
       </view>
       <view class='flex5 info'>
         <view class='info1'>{{item.title}}</view>

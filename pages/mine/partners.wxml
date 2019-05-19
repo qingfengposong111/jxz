@@ -3,7 +3,7 @@
   <view class='fixed_header'>
     <view class="partners_header">
       <view>积分总额</view>
-      <view class='income'>￥{{sum}}</view>
+      <view class='income'>{{sum}}</view>
       <!-- <view class='withdraw'>
        <span catchtap="addCard">提现银行卡：去添加银行卡信息</span>
       </view>
@@ -35,7 +35,7 @@
         <view class='time'>{{item.create_time}}</view>
       </view>
       <view class='flex2 status'>
-        支持￥{{item.amount}}
+        {{item.amount}}
       </view>
     </view>
   </view>
@@ -48,7 +48,7 @@
         <view class='time'>{{item.create_time}}</view>
       </view>
       <view class='flex2 status'>
-        支持￥{{item.amount}}
+        {{item.amount}}
       </view>
     </view>
   </view>

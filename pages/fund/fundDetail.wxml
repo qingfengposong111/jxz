@@ -12,8 +12,8 @@
       <view class='subtitle' wx:if="{{type==1}}">剩余
         <span>{{resetTime}}</span>天
       </view>
-       <view class='subtitle' wx:if="{{type==2}}">已成功</view>
-       <view class='subtitle' wx:if="{{type==3}}">已失败</view>
+       <view class='subtitle' wx:elif="{{type==2}}">已成功</view>
+       <view class='subtitle' wx:elif="{{type==3}}">已失败</view>
        <view class='subtitle' wx:else>{{type}}</view>
     </view>
   </view>

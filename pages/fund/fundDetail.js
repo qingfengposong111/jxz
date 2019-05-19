@@ -123,6 +123,7 @@ Page({
   },
 
   onImgOK(e) {
+    　//debugger;
     this.setData({
       shareImgUrl: e.detail.path
     })
@@ -152,7 +153,7 @@ Page({
 
   saveImage() {
     wx.saveImageToPhotosAlbum({
-      filePath: this.imagePath,
+      filePath: this.data.shareImgUrl,
     });
   },
   /**--------------------生命周期函数--监听页面加载---------------------------*/
@@ -250,7 +251,7 @@ Page({
     });
   },
 
-  //画二维码
+  //画头部图
   paletteImg1() {
     return ({
       width: '710rpx',
@@ -270,7 +271,7 @@ Page({
   },
 
 
-  //画二维码
+  //画头像
   paletteImg2() {
     return ({
       width: '80rpx',

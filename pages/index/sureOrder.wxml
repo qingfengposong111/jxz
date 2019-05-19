@@ -1,3 +1,5 @@
+<wxs module="wxmlFromat" src="../../utils/common.wxs"></wxs>
+
 <view class="container">
   <form class='sure_form'>
     <view class='form_item flex-start'>
@@ -71,7 +73,7 @@
 
   <view class="actions flex-start">
     <view class='flex2' style='padding-left:20rpx;'>总计：
-      <span>￥{{act.price*num}}</span>
+      <span>￥{{wxmlFromat.getFixedNumber(act.price*num,2)}}</span>
     </view>
     <button class='flex1 active2' catchtap='submitOrder' >{{orderType == 0 ? "提交订单":"发起众筹"}}</button>
   </view>
