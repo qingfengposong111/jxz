@@ -59,7 +59,7 @@
     <view class='modal'>
       <image src='../../images/susses.png'></image>
       <view class='title'>积分提现申请提交成功</view>
-      <view>本次提现积分：200积分</view>
+      <view>本次提现积分：{{sum}}积分</view>
       <view>结果将来1-2个工作日反馈</view>
       <button catchtap='showModal'>我知道了</button>
     </view>

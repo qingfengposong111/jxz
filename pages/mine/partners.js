@@ -15,8 +15,9 @@ Page({
     wx.navigateTo({ url: e.currentTarget.dataset.url })
   },
   showModal() {
-   if (this.data.userinfo.bank_card.length == 0) { util.djToast("您先完善提现银行卡信息！"); return; } 
-   if (this.data.sum == 0) { util.djToast("您暂时没有可提现的积分！"); return; } 
+   if (this.data.userinfo.bank_card.length == 0) { util.djToast("您先完善提现银行卡信息！");  return; } 
+   if (this.data.sum == 0) { util.djToast("您暂时没有可提现的积分！");  return; } 
+
    var _this = this;
    if(_this.data.visible == false){
      wx.showModal({
@@ -56,7 +57,10 @@ Page({
           visible: !_this.data.visible
         });
       }else{
-        util.djToast(res.msg)
+        util.djToast(res.msg);
+        _this.setData({
+          visible: !_this.data.visible
+        });
       }
     });
   },
