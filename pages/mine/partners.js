@@ -10,19 +10,25 @@ Page({
     sum:0,
     list1: [],
     list2: [],
+    showsum:0,
   },
   navTo: function (e) {
     wx.navigateTo({ url: e.currentTarget.dataset.url })
   },
+  showModal1(){
+    this.setData({
+      visible: false
+    });
+  },
   showModal() {
    if (this.data.userinfo.bank_card.length == 0) { util.djToast("您先完善提现银行卡信息！");  return; } 
-   if (this.data.sum == 0) { util.djToast("您暂时没有可提现的积分！");  return; } 
+   if (this.data.sum < 1) { util.djToast("您暂时没有可提现的积分！");  return; } 
 
    var _this = this;
    if(_this.data.visible == false){
      wx.showModal({
        title: '申请积分提现',
-       content: '本次提现积分：'+_this.data.sum + '积分',
+       content: '本次提现积分：' + _this.data.sum + '积分',
        success(res) {
          if (res.confirm) {
           _this.applyWithDraw();
@@ -49,7 +55,10 @@ Page({
   },
   applyWithDraw: function () {
     var _this = this
-    djRequest.djGet("/newPromotionCash", {"amount": _this.data.sum}, function (res) {
+    _this.setData({
+      showsum: _this.data.sum
+    })
+    djRequest.djGet("/newPromotionCash", { "amount": _this.data.sum}, function (res) {
      // console.log(res);
       if (res.code == 0) {
         _this.setData({
@@ -58,9 +67,6 @@ Page({
         });
       }else{
         util.djToast(res.msg);
-        _this.setData({
-          visible: !_this.data.visible
-        });
       }
     });
   },

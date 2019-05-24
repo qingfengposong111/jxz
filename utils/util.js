@@ -265,7 +265,7 @@ function changeFivteenToEighteen(card) {
 
 
 const isNotNull = (text,title) => {
-  if (text==null || text==undefined || text.length==0 || text =="") {
+  if (text == null || text == undefined || text.length == 0 || text == "" || text.replace(/\s+/g, '')=="") {
     wx.showToast({
       title: title+'不可为空',
       icon: "none",

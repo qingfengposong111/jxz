@@ -53,5 +53,5 @@
       <button form-type="submit">确认提交</button>
     </view>
   </form>
-  <view class='error'>公司名称和职位名称慧显示在您众筹结束后的分享海报上，不填写 则不显示，订单提交后不可修改 </view>
+  <view class='error'>公司名称和职位名称会显示在您众筹结束后的分享海报上，不填写 则不显示，订单提交后不可修改 </view>
 </view>
